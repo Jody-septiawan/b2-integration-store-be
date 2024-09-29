@@ -1,6 +1,7 @@
 const express = require("express");
-const { upload } = require("../../../helpers/uploadFile");
+// const { upload } = require("../../../helpers/uploadFile");
 const { createUploadFile } = require("../../controllers/upload");
+const multer = require("multer");
 
 const router = express.Router();
 
@@ -43,6 +44,7 @@ const router = express.Router();
  *       400:
  *         description: No file selected or invalid file type
  */
+const upload = multer();
 router.post("/", upload.single("file"), createUploadFile);
 
 module.exports = router;
